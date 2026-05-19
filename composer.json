@@ -1,0 +1,65 @@
+{
+    "name": "pinkary-project/laravel-reflection",
+    "description": "Laravel Reflection package is a simple package that provides extended functional helpers for your Laravel application.",
+    "keywords": ["laravel", "helpers", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nuno Maduro",
+            "email": "enunomaduro@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2.0"
+    },
+    "require-dev": {
+        "another-library/type-guard": "dev-main",
+        "laravel/framework": "^11.0",
+        "laravel/pint": "^1.15.0",
+        "orchestra/testbench": "^9.0.0",
+        "pestphp/pest": "^3.0.0",
+        "pestphp/pest-plugin-type-coverage": "3.x-dev",
+        "phpstan/phpstan": "^1.10.66",
+        "rector/rector": "^1.0.3",
+        "symfony/var-dumper": "^6.4.0|^7.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PinkaryProject\\LaravelReflection\\": "src/"
+        },
+        "files": [
+            "src/Functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "refacto": "rector",
+        "lint": "pint",
+        "refactor": "rector",
+        "test:lint": "pint --test",
+        "test:refactor": "rector --dry-run",
+        "test:types": "phpstan analyse",
+        "test:type-coverage": "pest --type-coverage --min=100",
+        "test:unit": "pest --coverage --min=100",
+        "test": [
+            "@test:lint",
+            "@test:refactor",
+            "@test:types",
+            "@test:type-coverage",
+            "@test:unit"
+        ]
+    }
+}
